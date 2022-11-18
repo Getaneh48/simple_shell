@@ -3,6 +3,7 @@
 /**
 * _env - handles the 'env' command.
 *
+* @appname: the application name
 * @tokens: lists of arguments.
 *
 * Return: 1 for error 0 for success.
@@ -36,6 +37,7 @@ int _env(char *appname __attribute__((unused)), char **tokens)
 /**
 * _setenv - sets an enviroment variable.
 *
+* @appname: the application name
 * @tokens: lists of arguments.
 *
 * Return: 1 for error 0 for success.
@@ -61,6 +63,7 @@ int _setenv(char *appname __attribute__((unused)), char **tokens)
 /**
 * _unsetenv - removes an enviroment variable.
 *
+* @appname: the application name
 * @tokens: lists of arguments.
 *
 * Return: -1 for error 0 for success.
@@ -84,6 +87,7 @@ int _unsetenv(char *appname __attribute__((unused)), char **tokens)
 /**
 * _cd - handles changing a working directory.
 *
+* @appname: the application name
 * @tokens: lists of arguments.
 *
 * Return: -1 for error 0 for success.
@@ -121,6 +125,7 @@ int _cd(char *appname __attribute__((unused)), char **tokens)
 /**
 * _alias - handles alias command.
 *
+* @appname: the application name
 * @tokens: lists of arguments.
 *
 * Return: -1 for error 0 for success.

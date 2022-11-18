@@ -3,6 +3,7 @@
 /**
 * _exitt - function that exits a program.
 *
+* @appname: the application name
 * @tokens: lists of arguments.
 *
 * Return: 1 for error 0 success.

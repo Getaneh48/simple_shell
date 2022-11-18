@@ -64,6 +64,7 @@ int execute_external_command(char *filepath, char **tokens)
 
 /**
 * runCommand - runs a command.
+* @appname: the application name
 * @tokens: array of strings.
 * Return: 0 for success 1 failer.
 */
@@ -100,6 +101,7 @@ int runCommand(char *appname, char **tokens)
 
 /**
 * handleCommand - runs a command
+* @appname: the application name
 * @tokens: array of strings.
 * Return: status of a command.
 */
@@ -114,6 +116,8 @@ int handleCommand(char *appname, char **tokens)
 
 /**
 * main - entry for the application
+* @argc: number of arguments
+* @argv: lists of arguments
 * Return: 0 success 1 failor.
 */
 int main(int argc __attribute__((unused)), char *argv[])
