@@ -6,6 +6,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -67,6 +68,11 @@ char *replace_variable(char *src_str, char *r_str, int sind, int i);
 int handle_dollar_symbol(char *path, char *str);
 char *perform_variable_replacement(char *str, char *env_name, char *env_val);
 void handle_alias_process(char **tokens);
+int read_command_file(char *filename, char *appname);
+int handleCommand(char *appname, char **tokens);
+int runCommand(char *appname, char **tokens);
+int execute_external_command(char *filepath, char **tokens);
+int checkBuiltinCmd(char *cmd);
 
 extern char **environ;
 extern int environ_on_stack;

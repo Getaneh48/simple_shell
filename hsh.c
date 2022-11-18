@@ -128,15 +128,20 @@ int main(int argc __attribute__((unused)), char *argv[])
 
 	alias = malloc(sizeof(char *));
 	init_app();
-	while ((count = _getline(buffer, size, stdin)))
+	if (argc == 2)
+		read_command_file(argv[1], argv[0]);
+	else
 	{
-		if (strlen(buffer) > 0)
+		while ((count = _getline(buffer, size, stdin)))
 		{
-			tokens = parse_string(buffer, ' ');
-			if (tokens != NULL)
+			if (strlen(buffer) > 0)
 			{
-				handleCommand(argv[0], tokens);
-				free_memory(tokens);
+				tokens = parse_string(buffer, ' ');
+				if (tokens != NULL)
+				{
+					handleCommand(argv[0], tokens);
+					free_memory(tokens);
+				}
 			}
 		}
 	}
