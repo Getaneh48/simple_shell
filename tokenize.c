@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
 * tokenize - break down a string with a delimeter.
 * @str: string to be tokenized.
@@ -12,14 +13,14 @@ char **tokenize(char *str, char delim)
 	int sp = 0, ep = 0, i = 0, j = 0;
 	char *token = NULL;
 
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if (delim == ' ')
 		{
 			if (str[i] == ' ' || str[i] == '\t')
 			{
 				ep = i - 1;
-				token = malloc((ep - sp) + 1);
+				token = malloc((ep - sp) + 2);
 				_strcpy(token, str, sp, ep);
 				tokens[j] = token;
 				sp = i + 1;
@@ -31,7 +32,7 @@ char **tokenize(char *str, char delim)
 			if (str[i] == delim)
 			{
 				ep = i - 1;
-				token = malloc((ep - sp) + 1);
+				token = malloc((ep - sp) + 2);
 				_strcpy(token, str, sp, ep);
 				tokens[j] = token;
 				sp = i + 1;
@@ -41,7 +42,7 @@ char **tokenize(char *str, char delim)
 		i++;
 	}
 	ep = i - 1;
-	token = malloc((ep - sp) + 1);
+	token = malloc((ep - sp) + 2);
 	_strcpy(token, str, sp, ep);
 	tokens[j] = token;
 	tokens[j + 1] = NULL;

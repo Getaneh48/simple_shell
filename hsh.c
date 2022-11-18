@@ -137,7 +137,7 @@ int main(void)
 			if (tokens != NULL)
 			{
 				handleCommand(tokens);
-				free(tokens);
+				free_memory(tokens);
 			}
 		}
 		show_current_path();

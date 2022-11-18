@@ -22,7 +22,7 @@ char *expand_variable(char *str)
 			strcat(env_name, env_name_tokens[0]);
 			str = perform_variable_replacement(str, env_name, env_name_tokens[1]);
 			free(env_name);
-			free(env_name_tokens);
+			free_memory(env_name_tokens);
 			i++;
 		}
 	}
@@ -66,7 +66,6 @@ char *perform_variable_replacement(char *str, char *env_name, char *env_val)
 			sindex = 0;
 		}
 	}
-
 	return (str);
 }
 
@@ -112,5 +111,4 @@ char *replace_variable(char *src_str, char *r_str, int sind, int i)
 	free(str2);
 
 	return (new_str);
-
 }

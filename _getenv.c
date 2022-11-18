@@ -10,24 +10,24 @@
 */
 char *_getenv(char *name)
 {
-	char **t_env = NULL, *env = NULL, *path = NULL;
+	char **t_env = NULL, **env = NULL, *path = NULL, *dstr = NULL;
 	int i = 0;
 
 	t_env = getenv_list();
 	if (t_env != NULL)
 	{
-
 		while (t_env[i] != NULL)
 		{
-			env = strtok(strdup(t_env[i]), "=");
-			if (strcmp(env, name) == 0)
+			dstr = strdup(t_env[i]);
+			env = tokenize(dstr, '=');
+			free(dstr);
+			if (strcmp(env[0], name) == 0)
 			{
-				env = strtok(NULL, "=");
-
-				path = strdup(env);
+				path = strdup(env[1]);
+				free_memory(env);
 				break;
 			}
-			free(env);
+			free_memory(env);
 			i++;
 		}
 	}

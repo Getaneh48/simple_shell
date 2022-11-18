@@ -15,7 +15,6 @@ char **parse_string(char *str, char delim)
 	i = 0, sq = -1, eq = -1, in_quote = FALSE, stoken = 0, etoken = 0;
 	tokens = malloc(sizeof(char *));
 	tokens[0] = NULL;
-
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] == '\'' || str[i] == '\"')
@@ -41,11 +40,9 @@ char **parse_string(char *str, char delim)
 		}
 
 	}
-
 	token = stripe_quote(str, &stoken, &etoken, &sq, &eq, i);
 	token = expand_variable(token);
 	tokens = allocate_mem(tokens, token, &j);
-
 	return (tokens);
 }
 
@@ -96,11 +93,12 @@ int *sq, int *eq, int i)
 		diff = *sq - *stoken;
 		if (diff > 1)
 		{
+			printf("diff > 1\n");
 			token = malloc((*eq - *sq) + diff + 1);
 			temp_token = malloc((*eq - *sq) + 1);
 			substr(str, token, *stoken, *sq);
 			substr(str, temp_token, *sq + 1, *eq);
-			strcat(token, temp_token);
+			_strcat(token, temp_token);
 			free(temp_token);
 		}
 		else
