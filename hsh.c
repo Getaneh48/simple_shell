@@ -124,7 +124,6 @@ int main(void)
 
 	alias = malloc(sizeof(char *));
 	init_app();
-	show_current_path();
 	while ((count = _getline(buffer, size, stdin)))
 	{
 		if (strlen(buffer) > 0)
@@ -136,7 +135,6 @@ int main(void)
 				free_memory(tokens);
 			}
 		}
-		show_current_path();
 	}
 	free(buffer);
 	if (temp_environ != NULL)

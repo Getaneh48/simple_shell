@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
 
 /**
 * _getline - get input from stdinput one line at a time.
@@ -12,6 +11,9 @@ size_t _getline(char *buffer, size_t size, FILE *stream)
 {
 	size_t count = 0;
 	char c;
+
+	if (isatty(STDIN_FILENO))
+		show_current_path();
 
 	while ((c = (char)getc(stream)) != '\n' && count < size - 1)
 	{
