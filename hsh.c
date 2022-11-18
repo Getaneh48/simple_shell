@@ -67,7 +67,7 @@ int execute_external_command(char *filepath, char **tokens)
 * @tokens: array of strings.
 * Return: 0 for success 1 failer.
 */
-int runCommand(char **tokens)
+int runCommand(char *appname, char **tokens)
 {
 	int builtin = 0, status __attribute__((unused));
 	char *cmdpath = NULL;
@@ -77,7 +77,7 @@ int runCommand(char **tokens)
 		builtin = checkBuiltinCmd(tokens[0]);
 		if (builtin != -1)
 		{
-			builtin_func[builtin](tokens);
+			builtin_func[builtin](appname, tokens);
 			return (0);
 		}
 		else
@@ -89,7 +89,7 @@ int runCommand(char **tokens)
 				free(cmdpath);
 			}
 			else
-				printf("%s: command not found\n", tokens[0]);
+				printf("%s: 1: %s: not found\n", appname, tokens[0]);
 
 			return (1);
 		}
@@ -103,11 +103,11 @@ int runCommand(char **tokens)
 * @tokens: array of strings.
 * Return: status of a command.
 */
-int handleCommand(char **tokens)
+int handleCommand(char *appname, char **tokens)
 {
 	size_t status = 0;
 
-	status = runCommand(tokens);
+	status = runCommand(appname, tokens);
 
 	return (status);
 }
@@ -116,7 +116,7 @@ int handleCommand(char **tokens)
 * main - entry for the application
 * Return: 0 success 1 failor.
 */
-int main(void)
+int main(int argc __attribute__((unused)), char *argv[])
 {
 	char *buffer = malloc(1024);
 	size_t count = 0, size = 1024;
@@ -131,7 +131,7 @@ int main(void)
 			tokens = parse_string(buffer, ' ');
 			if (tokens != NULL)
 			{
-				handleCommand(tokens);
+				handleCommand(argv[0], tokens);
 				free_memory(tokens);
 			}
 		}

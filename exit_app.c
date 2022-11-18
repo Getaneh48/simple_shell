@@ -8,7 +8,7 @@
 * Return: 1 for error 0 success.
 *
 */
-int _exitt(char **tokens)
+int _exitt(char *appname __attribute__((unused)), char **tokens)
 {
 	int argc = count_tokens(tokens);
 

@@ -7,7 +7,7 @@
 *
 * Return: 1 for error 0 for success.
 */
-int _env(char **tokens)
+int _env(char *appname __attribute__((unused)), char **tokens)
 {
 	int i = 0;
 	char **t_env = NULL;
@@ -40,7 +40,7 @@ int _env(char **tokens)
 *
 * Return: 1 for error 0 for success.
 */
-int _setenv(char **tokens)
+int _setenv(char *appname __attribute__((unused)), char **tokens)
 {
 	char *ev = NULL;
 
@@ -65,7 +65,7 @@ int _setenv(char **tokens)
 *
 * Return: -1 for error 0 for success.
 */
-int _unsetenv(char **tokens)
+int _unsetenv(char *appname __attribute__((unused)), char **tokens)
 {
 	int i = 0;
 
@@ -88,7 +88,7 @@ int _unsetenv(char **tokens)
 *
 * Return: -1 for error 0 for success.
 */
-int _cd(char **tokens)
+int _cd(char *appname __attribute__((unused)), char **tokens)
 {
 	int i = 0;
 
@@ -106,12 +106,12 @@ int _cd(char **tokens)
 		if (change_dir(tokens[1]) == 0)
 			return (0);
 
-		dprintf(2, "%s: %s: No such file or directory\n", tokens[0], tokens[1]);
+		dprintf(2, "%s: 1: %s: can't cd to %s\n", appname, tokens[0], tokens[1]);
 		return (-1);
 	}
 	else
 	{
-		dprintf(2, "hsh: %s: too many arguments\n", tokens[0]);
+		dprintf(2, "%s: 1: %s: can't cd to %s\n", appname, tokens[0], tokens[1]);
 		return (-1);
 	}
 
@@ -125,7 +125,7 @@ int _cd(char **tokens)
 *
 * Return: -1 for error 0 for success.
 */
-int _alias(char **tokens)
+int _alias(char *appname __attribute__((unused)), char **tokens)
 {
 	handle_alias(tokens);
 
