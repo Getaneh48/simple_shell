@@ -40,25 +40,27 @@ int substr(char *src, char *dest, size_t sp, size_t ep);
 int change_dir(char *path);
 void update_oldpwd(char *path);
 int handle_cd_hyphen(void);
-void show_current_path();
+void show_current_path(void);
 int handle_cd_tilder(void);
 int get_length(char **str);
 int handle_alias(char **tokens);
 char *remove_quote(char *token);
-void replace_homepath(char *home, char *cwd, int home_len, int cwd_len, int i, char *symbol);
+void replace_homepath(char *home, char *cwd,
+		int home_len, int cwd_len, int i, char *symbol);
 int check_alias_exists(char *name);
 int add_new_alias(char **al);
 char *create_alias_string(char **alias_cmd);
-char *stripe_quote(char *str, int *stoken, int *etoken, int *sq, int *eq, int i);
+char *stripe_quote(char *str, int *stoken,
+		int *etoken, int *sq, int *eq, int i);
 char **allocate_mem(char **buffer, char *str, int *j);
 char **parse_string(char *str, char delim);
 int update_alias(char **new_al);
-void list_alias();
+void list_alias(void);
 int is_setting_alias(char *al);
 void show_alias_by_name(char *name);
 char **move_envto_heapmem();
 int get_arrptr_length(char **arr);
-void init_app();
+void init_app(void);
 char **getenv_list();
 char *expand_variable(char *str);
 char *replace_variable(char *src_str, char *r_str, int sind, int i);
@@ -69,7 +71,9 @@ void handle_alias_process(char **tokens);
 extern char **environ;
 extern int environ_on_stack;
 extern char **temp_environ;
-extern char **alias; 
-static int (*builtin_func[]) (char **) = {&_exitt, &_env, &_setenv, &_unsetenv, &_cd, &_alias};
-static char *builtins[] = {"exit", "env", "setenv", "unsetenv", "cd", "alias", NULL};
+extern char **alias;
+static int (*builtin_func[]) (char **) = {&_exitt, &_env,
+	&_setenv, &_unsetenv, &_cd, &_alias};
+static char *builtins[] = {"exit", "env", "setenv",
+	"unsetenv", "cd", "alias", NULL};
 #endif
