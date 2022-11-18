@@ -10,7 +10,7 @@
 */
 int substr(char *src, char *dest, size_t sp, size_t ep)
 {
-	int s = sp, e = ep, i = 0;
+	size_t s = sp, i = 0;
 
 	if (ep == 0)
 		ep = strlen(src);

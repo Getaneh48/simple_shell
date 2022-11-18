@@ -45,13 +45,13 @@ int handle_cd_tilder(void);
 int get_length(char **str);
 int handle_alias(char **tokens);
 char *remove_quote(char *token);
-void replace_homepath(char *home, char *cwd,
-		int home_len, int cwd_len, int i, char *symbol);
+void replace_homepath(char *home, char *cwd, int home_len,
+		int cwd_len, int i, char *symbol);
 int check_alias_exists(char *name);
 int add_new_alias(char **al);
 char *create_alias_string(char **alias_cmd);
-char *stripe_quote(char *str, int *stoken,
-		int *etoken, int *sq, int *eq, int i);
+char *stripe_quote(char *str, int *stoken, int *etoken,
+		int *sq, int *eq, int i);
 char **allocate_mem(char **buffer, char *str, int *j);
 char **parse_string(char *str, char delim);
 int update_alias(char **new_al);
@@ -72,8 +72,4 @@ extern char **environ;
 extern int environ_on_stack;
 extern char **temp_environ;
 extern char **alias;
-static int (*builtin_func[]) (char **) = {&_exitt, &_env,
-	&_setenv, &_unsetenv, &_cd, &_alias};
-static char *builtins[] = {"exit", "env", "setenv",
-	"unsetenv", "cd", "alias", NULL};
 #endif
