@@ -10,10 +10,10 @@
 */
 char **duplicate_environ(char **tokens)
 {
-	char *str = NULL;
 	char **t_env = NULL;
 	int i = 0, k = 0;
 
+	tokens = tokens;
 	if (environ_on_stack)
 		t_env = environ;
 	else
@@ -140,7 +140,6 @@ int replace_env(char **tokens)
 */
 int remove_env(char **tokens)
 {
-	char *str = NULL;
 	int i = 0, k = 0;
 
 	if (environ_on_stack)

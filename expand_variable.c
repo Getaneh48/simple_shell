@@ -7,9 +7,8 @@
 */
 char *expand_variable(char *str)
 {
-	char **env_list = NULL, **env_name_tokens = NULL, *env_name, *temp = NULL;
-	int i = 0, pos = 0, sindex = 0, k = 0, j = 0;
-	int match_start = 0;
+	char **env_list = NULL, **env_name_tokens = NULL, *env_name;
+	int i = 0;
 
 	env_list = getenv_list();
 	if (env_list != NULL)
@@ -38,7 +37,7 @@ char *expand_variable(char *str)
 */
 char *perform_variable_replacement(char *str, char *env_name, char *env_val)
 {
-	int match_start = 0, k = 0, j = 0, sindex = 0;
+	int match_start = 0, k = 0, j = 0, sindex __attribute__((unused));
 	char *temp = NULL;
 
 	for (k = 0; str[k] != '\0'; k++)

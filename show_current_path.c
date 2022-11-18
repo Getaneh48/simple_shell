@@ -6,8 +6,9 @@
 */
 void show_current_path(void)
 {
-	char *home = NULL, *cwd = NULL, *new_path = NULL, *str = NULL;
-	char *user = NULL;
+	char *home __attribute__((unused)), *cwd = NULL,
+	     *new_path __attribute__((unused));
+	char *user, *str __attribute__((unused));
 	int i = 0, match = TRUE, home_len = 0, cwd_len = 0;
 
 	home = _getenv("HOME");
@@ -56,7 +57,7 @@ void show_current_path(void)
 *
 * Return: 0 success 1 failor.
 */
-void replace_homepath(char *home, char *cwd,
+void replace_homepath(char *home __attribute__((unused)), char *cwd,
 int home_len, int cwd_len, int i, char *symbol)
 {
 	char *new_path = NULL, *str = NULL, *user = NULL;

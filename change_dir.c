@@ -9,8 +9,8 @@
 */
 int change_dir(char *path)
 {
-	char str[100], cwd[100], oldpwd[100], *env_path = NULL, *args[4];
-	int cd_result, result;
+	char str[100], cwd[100], oldpwd[100], *args[4];
+	int result;
 
 	if (path)
 	{
@@ -63,7 +63,7 @@ int change_dir(char *path)
 int handle_dollar_symbol(char *path, char *str)
 {
 	char *env_path = NULL;
-	int cd_result, result;
+	int cd_result, result = 0;
 
 	result = substr(path, str, 1, strlen(path));
 	if (result)
@@ -82,6 +82,8 @@ int handle_dollar_symbol(char *path, char *str)
 	}
 	else
 		return (-1);
+
+	return (0);
 }
 
 /**

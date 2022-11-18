@@ -9,10 +9,11 @@
 */
 char **parse_string(char *str, char delim)
 {
-	char **tokens = NULL, *temp_token = NULL, *token = NULL;
-	int i, sq, eq, in_quote, stoken, etoken, diff = 0, j = 0;
+	char **tokens = NULL, *temp_token __attribute__((unused)), *token = NULL;
+	int i, sq, eq, in_quote, stoken, etoken, diff __attribute__((unused)), j = 0;
 
-	i = 0, sq = -1, eq = -1, in_quote = FALSE, stoken = 0, etoken = 0;
+	i = 0, sq = -1, eq = -1, in_quote = FALSE, stoken = 0, etoken = 0, diff = 0;
+	temp_token = NULL;
 	tokens = malloc(sizeof(char *));
 	tokens[0] = NULL;
 	for (i = 0; str[i] != '\0'; i++)
@@ -85,15 +86,16 @@ char **allocate_mem(char **buffer, char *str, int *j)
 char *stripe_quote(char *str, int *stoken, int *etoken,
 int *sq, int *eq, int i)
 {
-	char *token = NULL, *temp_token = NULL;
+	char *token = NULL, *temp_token __attribute__((unused));
+
 	int diff = 0;
 
+	temp_token = NULL;
 	if (*sq != -1 && *eq != -1)
 	{
 		diff = *sq - *stoken;
 		if (diff > 1)
 		{
-			printf("diff > 1\n");
 			token = malloc((*eq - *sq) + diff + 1);
 			temp_token = malloc((*eq - *sq) + 1);
 			substr(str, token, *stoken, *sq);
@@ -112,6 +114,7 @@ int *sq, int *eq, int i)
 	}
 	else
 	{
+		diff = 0;
 		*etoken = i;
 		token = malloc((*etoken - *stoken) + 1);
 		substr(str, token, *stoken, *etoken);

@@ -9,7 +9,7 @@ char *locate(char *cmd)
 {
 	struct stat buf;
 	char *path = NULL, **p = NULL, *filepath = NULL, *str;
-	int len = 0, i = 0;
+	int i = 0;
 
 	if (stat(cmd, &buf) == 0)
 		return (strdup(cmd));

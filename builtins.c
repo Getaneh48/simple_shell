@@ -67,7 +67,7 @@ int _setenv(char **tokens)
 */
 int _unsetenv(char **tokens)
 {
-	int i = 0, len;
+	int i = 0;
 
 	for (i = 0; tokens[i] != NULL; i++)
 		;
@@ -90,8 +90,7 @@ int _unsetenv(char **tokens)
 */
 int _cd(char **tokens)
 {
-	int i = 0, result = 0;
-	char buf[100];
+	int i = 0;
 
 	for (i = 0; tokens[i] != NULL; i++)
 		;

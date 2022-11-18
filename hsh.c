@@ -69,10 +69,8 @@ int execute_external_command(char *filepath, char **tokens)
 */
 int runCommand(char **tokens)
 {
-	pid_t pid;
-	size_t i = 0, builtin = 0;
+	int builtin = 0, status __attribute__((unused));
 	char *cmdpath = NULL;
-	int status;
 
 	if (tokens != NULL)
 	{
@@ -122,14 +120,12 @@ int main(void)
 {
 	char *buffer = malloc(1024);
 	size_t count = 0, size = 1024;
-	char *cwd;
 	char **tokens = NULL;
 
 	alias = malloc(sizeof(char *));
-
 	init_app();
 	show_current_path();
-	while (count = _getline(buffer, size, stdin))
+	while ((count = _getline(buffer, size, stdin)))
 	{
 		if (strlen(buffer) > 0)
 		{

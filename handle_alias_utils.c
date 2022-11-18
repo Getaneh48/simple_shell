@@ -6,7 +6,7 @@
 */
 void handle_alias_process(char **tokens)
 {
-	int token_length, arg_length, result, i = 1, j = 0;
+	int arg_length, result, i = 1;
 	char **args = NULL, *token, *tk;
 
 	i = 1;
@@ -99,7 +99,6 @@ char *remove_quote(char *token)
 */
 char *create_alias_string(char **alias_cmd)
 {
-	int i = 0;
 	char *new_str = NULL;
 
 	new_str = malloc(strlen(alias_cmd[0]) + strlen(alias_cmd[1]) + 4);

@@ -7,10 +7,7 @@
 */
 int handle_alias(char **tokens)
 {
-	int token_length, arg_length, result;
-	char **args = NULL;
-	char *token, *tk;
-	int i = 1, j = 0;
+	int token_length;
 
 	if (tokens[0] != NULL)
 	{
